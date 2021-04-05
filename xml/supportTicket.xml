@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <supportTicket xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="supportTicket.xsd">
+xsi:noNamespaceSchemaLocation="./supportTicket.xsd">
   <ticketNumber>
     <id>0001</id>
     <subject>Computer Problems</subject>
