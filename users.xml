@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="users.xsd">
+  <user>
+    <id>0001</id>
+    <name>
+      <first>Katharine</first>
+      <last>Hughes</last>
+    </name>
+    <birthdate>1960-12-30</birthdate>
+    <hiredate>2019-01-02</hiredate>
+    <role>Biological Pharmaceutical Coordinator</role>
+    <userType>Client</userType>
+    <credentials>
+      <email>kathy@mail.com</email>
+      <password>c5cc18e1840ef4d0ea656b4145bc0048</password>
+    </credentials>
+  </user>
+  <user>
+    <id>0002</id>
+    <name>
+      <first>Norman</first>
+      <last>Hughes</last>
+    </name>
+    <birthdate>1958-01-30</birthdate>
+    <hiredate>2018-03-20</hiredate>
+    <role>Vice President of Sales Development</role>
+    <userType>Client</userType>
+    <credentials>
+      <email>norm@mail.com</email>
+      <password>b5e7ba661c078118a2837bbe51204de3</password>
+    </credentials>
+  </user>
+  <user>
+    <id>0003</id>
+    <name>
+      <first>Jessica</first>
+      <last>Hughes</last>
+    </name>
+    <birthdate>1988-12-06</birthdate>
+    <hiredate>2021-01-01</hiredate>
+    <role>Security Co-ordinator</role>
+    <userType>Client</userType>
+    <credentials>
+      <email>jessica@mail.com</email>
+      <password>d94746acc45beeadad99ea3a783801d6</password>
+    </credentials>
+  </user>
+  <user>
+    <id>0004</id>
+    <name>
+      <first>Bryan</first>
+      <last>Hughes</last>
+    </name>
+    <birthdate>1992-07-06</birthdate>
+    <hiredate>2015-10-13</hiredate>
+    <role>Data Specialist</role>
+    <userType>Support Staff</userType>
+    <credentials>
+      <email>bryan@mail.com</email>
+      <password>d7b00f27a679e9f290a2050030be574d</password>
+    </credentials>
+  </user>
+  <user>
+    <id>0005</id>
+    <name>
+      <first>Joanna</first>
+      <last>Kommala</last>
+    </name>
+    <hiredate>2020-01-28</hiredate>
+    <role>Professor</role>
+    <userType>Support Staff</userType>
+    <credentials>
+      <email>joanna@mail.com</email>
+      <password>bbe768edd3967be9d29887928d572d5b</password>
+    </credentials>
+  </user>
+</users>

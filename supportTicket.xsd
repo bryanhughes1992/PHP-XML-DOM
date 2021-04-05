@@ -1,0 +1,30 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="supportTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ticketNumber" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:int"/>
+              <xs:element name="subject" type="xs:string" />
+              <xs:element name="startdate" type="xs:dateTime" />
+              <xs:element name="enddate" type="xs:dateTime"/>
+              <xs:element name="partsRequired" type="xs:boolean"/>
+              <xs:element name="resolved" type="xs:boolean"></xs:element>
+              <xs:element name="message" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="userId" type="xs:int"/>
+                      <xs:attribute name="dateSent" type="xs:dateTime"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
