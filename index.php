@@ -22,6 +22,7 @@
         </fieldset>
       </form>
       <?php require_once 'scripts/login.php' ?>
+      <!--<?php require_once 'scripts/xmlDoc.php' ?>-->
     </div>
   </body>
 </html>
