@@ -16,7 +16,7 @@
           <input type="text" name="email" class="input" required>
 
           <label for="pass">Password:</label>
-          <input type="text" name="pass" class="input" required>
+          <input type="password" name="pass" class="input" required>
 
           <input type="submit">
         </fieldset>
