@@ -3,7 +3,6 @@ $xmlDoc = new DOMDocument();
 $xmlDoc->load("../xml/supportTicket.xml");
 
 $tickets = $xmlDoc->getElementsByTagName("ticketNumber");
-var_dump($tickets);
 ?>
 
 <!DOCTYPE>
@@ -20,11 +19,13 @@ var_dump($tickets);
           <th>Subject:</th>
         </thead>
         <tbody>
-          <tr>
-            <?php
-
-            ?>
-          </tr>
+          <?php
+          foreach($tickets as $value) {
+            echo "<tr><td>" . $value->getElementsByTagName('id')[0]->nodeValue . "</td>";
+            echo "<td><a href='ticketDetails.php?id=". $value->getElementsByTagName('id')[0]->nodeValue."'>". $value->getElementsByTagName('subject')[0]->nodeValue."</a>";
+            echo "</td></tr>";
+          }
+          ?>
         </tbody>
       </table>
     </div>
