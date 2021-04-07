@@ -2,8 +2,6 @@
 //Begin a server session
 session_start();
 
-
-
 //If POST is used
 if  ($_SERVER["REQUEST_METHOD"] == "POST") {
   //Empty strings for the email and password
@@ -15,7 +13,6 @@ if  ($_SERVER["REQUEST_METHOD"] == "POST") {
   //A variable to hold all users
   $users = $xmlDoc->getElementsByTagName("user");
 
-
   //Capture the user inputted email
   $email = test_input($_POST['email']);
   //Capture the user inputted password
@@ -24,18 +21,19 @@ if  ($_SERVER["REQUEST_METHOD"] == "POST") {
   $hashedPass = md5($pass);
 
   foreach ($users as $value) {
-    //echo $value->getElementsByTagName("email")[0]->nodeValue . "</br>";
+    //Capture all the email element(s) in the XML doc
+    $xmlEmail = $value->getElementsByTagName("email")[0]->nodeValue;
+    //Capture the password
+    $xmlPass = $value->getElementsByTagName("password")[0]->nodeValue;
     //If the user inputted email matches any 'email' in the XML doc
-    if ($email == $value->getElementsByTagName("email")[0]->nodeValue ) {
+    if ($email == $xmlEmail) {
       //AND if the hashed pass matches the value of 'password' in the XML doc
-      if ($hashedPass == $value->getElementsByTagName("password")[0]->nodeValue) {
-        //Debug Statement
-        //echo "Success!";
+      if ($hashedPass == $xmlPass) {
         //Store the email for this user as a session variable
         $_SESSION["email"] = $value->getElementsByTagName('email')[0]->nodeValue;
         //Store the userType for this user as a session variable
         $_SESSION["userType"] = $value->getElementsByTagName("userType")[0]->nodeValue;
-        //Store the id for this user as a session variable
+        //Store the ID for this user as a session variable
         $_SESSION["id"] = $value->getElementsByTagName("id")[0]->nodeValue;
 
         //If the userType is Admin,
@@ -54,6 +52,8 @@ if  ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 }
+
+
 /**
  * This function takes user input, '$data'
  * and removes whitespace, slashes, and HTML
