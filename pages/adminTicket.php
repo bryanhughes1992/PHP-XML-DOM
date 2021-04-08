@@ -5,7 +5,7 @@ $xmlDoc->load("../xml/supportTicket.xml");
 $tickets = $xmlDoc->getElementsByTagName("ticketNumber");
 ?>
 
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
