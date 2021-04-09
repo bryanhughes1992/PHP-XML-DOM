@@ -1,25 +1,32 @@
 <?php
+
+//Capture the userID from the query string
+$userID = $_GET['id'];
+
 //Store a new DOM document
 $xmlDoc = new DOMDocument("1.0", "utf-8");
 
 //Store the supportTicket XML doc in this variable
 $testFile = file_get_contents("../xml/supportTicket.xml");
+
 //Load the supportTicket file into the DOM document
 $xmlDoc->loadXML($testFile);
 
+//Get all the ticket ID's in the XML Document
 $ticketID = $xmlDoc->getElementsByTagName("id");
-var_dump($ticketID);
-
-/**
- * Connection to previous page
- */
-$userID = $_GET['id'];
-echo $userID;
-
-//$xmlDoc = simplexml_load_file("../xml/supportTicket.xml");
 
 
+//Debug statement:
 //var_dump($ticketID);
+//echo $userID;
 
+foreach ($ticketID as $value) {
+
+  if ($value->nodeValue == $userID) {
+    //print($value->nodeValue);
+    $matchingTicket = $xmlDoc->getElementsByTagName("ticketNumber")[$userID]->nodeValue;
+    print($matchingTicket);
+  }
+}
 
 ?>
