@@ -20,11 +20,16 @@ $ticketID = $xmlDoc->getElementsByTagName("id");
 //var_dump($ticketID);
 //echo $userID;
 
-foreach ($ticketID as $value) {
+foreach ($ticketID as $key => $value) {
 
-  if ($value->nodeValue == $userID) {
+  if ($value->textContent == $userID) {
+
     //print($value->nodeValue);
-    $matchingTicket = $xmlDoc->getElementsByTagName("ticketNumber")[$userID]->nodeValue;
+
+    echo $key . $value->textContent . "<br/>";
+
+    $matchingTicket = $xmlDoc->getElementsByTagName("ticketNumber")[$key]->nodeValue;
+
     print($matchingTicket);
   }
 }
