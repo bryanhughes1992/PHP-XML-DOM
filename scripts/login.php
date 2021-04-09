@@ -6,33 +6,46 @@ session_start();
 if  ($_SERVER["REQUEST_METHOD"] == "POST") {
   //Empty strings for the email and password
   $email = $pass = "";
+
   //A variable to hold a new XML Document
-  $xmlDoc = new DOMDocument();
+  $xmlDoc = new DOMDocument("1.0", "utf-8");
+
   //Load the 'users.xml' into the xmlDoc variable
-  $xmlDoc->load("../xml/users.xml");
+  $usersFile = file_get_contents("../xml/users.xml");
+
+  //Load the users file into the DOM document
+  $xmlDoc->loadXML($usersFile);
+
   //A variable to hold all users
   $users = $xmlDoc->getElementsByTagName("user");
 
   //Capture the user inputted email
   $email = test_input($_POST['email']);
+
   //Capture the user inputted password
   $pass = test_input($_POST['pass']);
+
   //Hash their password
   $hashedPass = md5($pass);
 
+  //Iterate through the users
   foreach ($users as $value) {
     //Capture all the email element(s) in the XML doc
     $xmlEmail = $value->getElementsByTagName("email")[0]->nodeValue;
+
     //Capture the password
     $xmlPass = $value->getElementsByTagName("password")[0]->nodeValue;
+
     //If the user inputted email matches any 'email' in the XML doc
     if ($email == $xmlEmail) {
       //AND if the hashed pass matches the value of 'password' in the XML doc
       if ($hashedPass == $xmlPass) {
         //Store the email for this user as a session variable
         $_SESSION["email"] = $value->getElementsByTagName('email')[0]->nodeValue;
+
         //Store the userType for this user as a session variable
         $_SESSION["userType"] = $value->getElementsByTagName("userType")[0]->nodeValue;
+
         //Store the ID for this user as a session variable
         $_SESSION["id"] = $value->getElementsByTagName("id")[0]->nodeValue;
 
@@ -44,7 +57,6 @@ if  ($_SERVER["REQUEST_METHOD"] == "POST") {
           //redirect to the userTicket page.
           header("Location: ../pages/userTicket.php");
         }
-
       } else {
         echo "Incorrect Email or Password";
         break;

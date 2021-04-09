@@ -1,7 +1,11 @@
 <?php
-$xmlDoc = new DOMDocument();
-$xmlDoc->load("../xml/supportTicket.xml");
-
+//Create a new XML DOM document
+$xmlDoc = new DOMDocument("1.0", "utf-8");
+//Store the contents of this XML file in a variable
+$supportTickets = file_get_contents("../xml/supportTicket.xml");
+//Load the XML support tickets
+$xmlDoc->loadXML($supportTickets);
+//Capture all support tickets
 $tickets = $xmlDoc->getElementsByTagName("ticketNumber");
 ?>
 
@@ -13,6 +17,7 @@ $tickets = $xmlDoc->getElementsByTagName("ticketNumber");
   </head>
   <body>
     <div>
+      <h1>Admin Page</h1>
       <table>
         <thead>
           <th>ID:</th>
@@ -21,8 +26,11 @@ $tickets = $xmlDoc->getElementsByTagName("ticketNumber");
         <tbody>
           <?php
           foreach($tickets as $value) {
-            echo "<tr><td>" . $value->getElementsByTagName('id')[0]->nodeValue . "</td>";
-            echo "<td><a href='ticketDetails.php?id=". $value->getElementsByTagName('id')[0]->nodeValue."'>". $value->getElementsByTagName('subject')[0]->nodeValue."</a>";
+            $one = $value->getElementsByTagName('id')[0]->nodeValue;
+            $two = $value->getElementsByTagName('subject')[0]->nodeValue;
+
+            echo "<tr><td>" . $one . "</td>";
+            echo "<td><a href='ticketDetails.php?id=". $one . "'>" . $two . "</a>";
             echo "</td></tr>";
           }
           ?>
